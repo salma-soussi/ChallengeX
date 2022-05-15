@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// Admin
+import DashBoard from "./pages/admin/Dashboard";
+import User from "./pages/admin/User";
+import Comments from "./pages/admin/Comments";
+import Project from "./pages/admin/Project";
+import Profile from "./pages/admin/Profile";
+import EditComment from "./pages/admin/EditComment";
+import AddEditProject from "./pages/admin/AddEditProject";
+import Login from "./pages/admin/Login";
+// visitor
+import Home from "./pages/visitor/Home";
+import Projects from "./pages/visitor/Projects";
+import ProjectOne from "./pages/visitor/project";
+import SignIn from "./pages/visitor/SignIn";
+import SignUp from "./pages/visitor/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main className="">
+        <Routes>
+          <Route path="/app/home" element={<DashBoard />} />
+          <Route path="/app/Users" element={<User />} />
+          <Route path="/app/Comments" element={<Comments />} />
+          <Route path="/app/Comment/:id" element={<EditComment />} />
+          <Route path="/app/Projects" element={<Project />} />
+          <Route path="/app/Projects/add" element={<AddEditProject />} />
+          <Route path="/app/Projects/:id" element={<AddEditProject />} />
+          <Route path="/app/Profile" element={<Profile />} />
+          <Route path="/app" element={<Login />} />
+
+          <Route path="/" element={<Home />} />
+          <Route path="/Challenges" element={<Projects />} />
+          <Route path="/Challenges/:id" element={<ProjectOne />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
