@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function TableComments() {
   return (
@@ -74,22 +76,26 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">01/10/2012</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      01/10/2012
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
-                    <button
-                      href="#"
-                      className="text-indigo-600 hover:text-indigo-900 mr-2"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    <Link to={`/app/Comments/12`}>
+                      <button
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-900 mr-2"
                       >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button
                       href="#"
                       className="text-indigo-600 hover:text-indigo-900"
@@ -101,9 +107,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -141,19 +147,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">01/10/2012</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      01/10/2012
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -162,9 +172,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -202,19 +212,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">01/10/2012</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      01/10/2012
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -223,9 +237,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -251,7 +265,9 @@ export default function TableComments() {
                     </div>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">Developer</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      Developer
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
                     <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
@@ -263,19 +279,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">02/10/2018</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      02/10/2018
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -284,9 +304,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -324,19 +344,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">23/09/2010</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      23/09/2010
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -345,9 +369,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -385,19 +409,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">23/09/2010</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      23/09/2010
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -406,9 +434,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>
@@ -446,19 +474,23 @@ export default function TableComments() {
                     </span>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                    <p className="text-gray-900 whitespace-no-wrap">23/09/2010</p>
+                    <p className="text-gray-900 whitespace-no-wrap">
+                      23/09/2010
+                    </p>
                   </td>
                   <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm 7 ">
-                    <button className="text-indigo-600 hover:text-indigo-900 mr-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-green-600 hover:text-green-900"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                      </svg>
-                    </button>
+                    <Link to={`/app/Comments/12`}>
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-green-600 hover:text-green-900"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg>
+                      </button>
+                    </Link>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -467,9 +499,9 @@ export default function TableComments() {
                         fill="currentColor"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         />
                       </svg>
                     </button>

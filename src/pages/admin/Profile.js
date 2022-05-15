@@ -9,13 +9,11 @@ export default function Profile() {
         <div className="shadow-lg rounded-2xl  bg-white dark:bg-gray-800">
           <img alt="profil" src={banner} className="rounded-t-lg h-48 w-full mb-4" />
           <div className="flex flex-col items-center justify-center p-4 -mt-20">
-            <a href="#" className="block relative">
               <img
                 alt="profil"
                 src="	https://source.unsplash.com/random/360x480"
                 className="mx-auto object-cover rounded-full h-28 w-28  border-2 border-white dark:border-gray-800"
               />
-            </a>
             <p className="text-gray-800 dark:text-white text-xl font-medium mt-2">
               Alex John
             </p>

@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Comments() {
+  const [add, setAdd] = useState(true);
+  const toggle = () => setAdd((prev) => !prev);
   return (
     <section>
       <div className="antialiased container px-5 pt-12 mx-auto lg:w-10/12 ">
@@ -41,7 +45,9 @@ export default function Comments() {
                     alt=""
                   />
                 </div>
-                <div className="text-sm text-rose-500 font-semibold">5 Replies</div>
+                <div className="text-sm text-rose-500 font-semibold">
+                  5 Replies
+                </div>
               </div>
             </div>
           </div>
@@ -62,7 +68,10 @@ export default function Comments() {
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua.
               </p>
-              <h4 className="my-5 uppercase tracking-wide text-rose-400 font-bold text-xs">
+              <h4
+                className="my-5 uppercase tracking-wide text-rose-400 font-bold text-xs"
+                onClick={toggle}
+              >
                 Replies
               </h4>
               <div className="space-y-4">
@@ -106,8 +115,16 @@ export default function Comments() {
             </div>
           </div>
           <form className="w-full   rounded-lg  pt-2">
-            <h2 className="pt-3 pb-2 text-gray-800 text-lg tracking-widest font-medium title-font uppercase">Add a new comment</h2>
-            <h2 className="pt-3 pb-2 text-gray-800 text-lg tracking-widest font-medium title-font uppercase">Reply to a comment</h2>
+            {add ? (
+              <h2 className="pt-3 pb-2 text-gray-800 text-lg tracking-widest font-medium title-font uppercase">
+                Add a new comment
+              </h2>
+            ) : (
+              <h2 className="pt-3 pb-2 text-gray-800 text-lg tracking-widest font-medium title-font uppercase">
+                Reply to a comment
+              </h2>
+            )}
+
             <div className="w-full md:w-full mb-2 mt-2">
               <textarea
                 className="bg-white-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"

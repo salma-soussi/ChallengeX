@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-export default function Detail() {
+export default function Detail({project}) {
   return (
     <section className="text-gray-600 overflow-hidden">
       <div className="container px-5 pt-12 mx-auto">
@@ -11,19 +11,19 @@ export default function Detail() {
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-sky-500 tracking-widest">
-              BRAND NAME
+              Design
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              The Catcher in the Rye
+              {project.title}
             </h1>
             <div className="flex mb-4">
               <span className="flex items-center py-2 ">
-                <span className="text-gray-600 mr-1">4 </span>
+                <span className="text-gray-600 mr-1">{project.likes} </span>
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-5 h-5 text-sky-500"
                   viewBox="0 0 24 24"
                 >
@@ -32,12 +32,12 @@ export default function Detail() {
               </span>
 
               <span className="flex items-center py-2 ">
-                <span className="text-gray-600 mx-1">4 </span>
+                <span className="text-gray-600 mx-1">{project.likes} </span>
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-5 h-5 text-rose-500"
                   viewBox="0 0 24 24"
                 >
@@ -46,12 +46,7 @@ export default function Detail() {
               </span>
             </div>
             <p className="leading-relaxed">
-              Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-              sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-              juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-              seitan poutine tumeric. Gastropub blue bottle austin listicle
-              pour-over, neutra jean shorts keytar banjo tattooed umami
-              cardigan.
+            {project.description} 
             </p>
 
             <div className="flex justify-between mt-4 w-full">
@@ -65,11 +60,11 @@ export default function Detail() {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                   />
                 </svg>
@@ -78,9 +73,9 @@ export default function Detail() {
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 self-end">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -90,9 +85,9 @@ export default function Detail() {
               <button className="rounded-full w-10 h-10 bg-rose-200 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4 self-end">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >

@@ -33,7 +33,7 @@ export default function signIn() {
               <form>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                   >
                     Email Address
@@ -50,7 +50,7 @@ export default function signIn() {
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
                     <label
-                      for="password"
+                      htmlFor="password"
                       className="text-sm text-gray-600 dark:text-gray-200"
                     >
                       Password

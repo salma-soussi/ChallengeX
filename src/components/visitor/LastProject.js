@@ -1,6 +1,14 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "../visitor/Card";
 export default function LastProject() {
+  const [allProjects, setAllProjects] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:4000/projects/")
+      .then((res) => res.json())
+      .then((data) => setAllProjects(data));
+  }, []);
+  const cards = allProjects.map((data) => <Card data={data} key={data._id} />);
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -12,30 +20,26 @@ export default function LastProject() {
             Our newest Challenges
           </h1>
         </div>
-        <div className="flex flex-wrap -m-4">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+        <div className="flex flex-wrap -m-4">{cards}</div>
         <div className="flex flex-col text-center w-full mt-10">
-          <a className="text-rose-500 tracking-widest font-medium title-font mb-1 text-center self-center inline-flex items-center">
-            <a href="Challenges" className="cursor-pointer">Learn More</a>
+          <Link
+            to="/Challenges"
+            className="text-rose-500 tracking-widest font-medium title-font mb-1 text-center self-center flex items-center "
+          >
+            <span className="cursor-pointer">Learn More</span>
             <svg
               className="w-4 h-4 ml-2"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

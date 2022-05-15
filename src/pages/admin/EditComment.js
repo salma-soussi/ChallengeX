@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SideBarAdmin from "../../components/admin/SideBarAdmin";
 export default function EditComment() {
   return (
@@ -8,13 +9,13 @@ export default function EditComment() {
           <div className="p-4 bg-gray-100  dark:bg-slate-800  rounded-lg bg-opacity-5">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4">
-                <a href="#" className="block relative">
+                <Link to="app/Users" className="block relative">
                   <img
-                    alt="profil"
+                    alt="profile"
                     src="	https://source.unsplash.com/random/360x480"
                     className="mx-auto object-cover rounded-full h-16 w-16 "
                   />
-                </a>
+                </Link>
                 <h1 className="text-gray-600 dark:text-white">Charlie Black</h1>
               </div>
             </div>
@@ -40,7 +41,7 @@ export default function EditComment() {
               <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                 <div>
                   <div className=" relative ">
-                    <label className="text-gray-700" for="name">
+                    <label className="text-gray-700" htmlFor="name">
                       <textarea
                         className="flex-1 appearance-none border border-gray-50 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                         id="comment"
@@ -55,7 +56,7 @@ export default function EditComment() {
                 <div>
                   <div className=" relative ">
                     <label
-                      for="Toggle1"
+                      htmlFor="Toggle1"
                       className="inline-flex items-center space-x-4 cursor-default text-coolGray-800"
                     >
                       <span>Reply</span>

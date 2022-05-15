@@ -1,4 +1,4 @@
-export default function ChallengeDetail() {
+export default function ChallengeDetail({ project }) {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto lg:w-10/12 ">
@@ -15,12 +15,7 @@ export default function ChallengeDetail() {
             <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
               Brief
             </h2>
-            <p className="leading-relaxed text-base">
-              Locavore cardigan small batch roof party blue bottle blog meggings
-              sartorial jean shorts kickstarter migas sriracha church-key synth
-              succulents. Actually taiyaki neutra, distillery gastropub pok pok
-              ugh.
-            </p>
+            <p className="leading-relaxed text-base">{project.body}</p>
 
             <button
               type="button"
@@ -32,11 +27,11 @@ export default function ChallengeDetail() {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                stroke-width="2"
+                strokeWidth="2"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                 />
               </svg>

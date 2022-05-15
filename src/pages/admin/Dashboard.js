@@ -10,17 +10,17 @@ export default function DashBoard() {
     {
       label: "User",
       icon: (
-        <span class="rounded-xl relative p-4 bg-sky-200">
+        <span className="rounded-xl relative p-4 bg-sky-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="text-sky-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+            className="text-sky-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
             viewBox="0 0 20 20"
             fill="currentColor"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
           </svg>
         </span>
@@ -30,17 +30,17 @@ export default function DashBoard() {
     {
       label: "Project",
       icon: (
-        <span class="rounded-xl relative p-4 bg-green-200">
+        <span className="rounded-xl relative p-4 bg-green-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="text-green-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="text-green-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
             <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
           </svg>
@@ -51,10 +51,10 @@ export default function DashBoard() {
     {
       label: "Comment",
       icon: (
-        <span class="rounded-xl relative p-4 bg-red-200">
+        <span className="rounded-xl relative p-4 bg-red-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="text-red-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            className="text-red-500 h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -67,7 +67,7 @@ export default function DashBoard() {
     },
   ];
   const elements = data.map((element) => (
-    <InfoCard icon={element.icon} name={element.label} num={element.num} />
+    <InfoCard icon={element.icon} name={element.label} num={element.num} key={element.label} />
   ));
   return (
     <div className="flex  justify-start relative  m-0">

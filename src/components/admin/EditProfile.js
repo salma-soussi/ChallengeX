@@ -2,14 +2,12 @@ export default function EditProfile() {
   return (
     <section className="p-6 text-coolGray-900 w-4/5 mt-5">
       <form
-        novalidate=""
-        action=""
         className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
       >
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
           <div className="col-span-full sm:col-span-3 mr-4">
             <label
-              for="username"
+              htmlFor="username"
               className="text-base text-gray-800 dark:text-white "
             >
               Username
@@ -23,7 +21,7 @@ export default function EditProfile() {
           </div>
           <div className="col-span-full sm:col-span-3 ml-4">
             <label
-              for="website"
+              htmlFor="website"
               className="text-base text-gray-800 dark:text-white"
             >
               Email
@@ -37,7 +35,7 @@ export default function EditProfile() {
           </div>
           <div className="col-span-full">
             <label
-              for="bio"
+              htmlFor="bio"
               className="text-base text-gray-800 dark:text-white"
             >
               Bio
@@ -49,7 +47,7 @@ export default function EditProfile() {
             ></textarea>
           </div>
           <div className="col-span-full">
-            <label for="bio" className="text-sm text-gray-800 dark:text-white">
+            <label htmlFor="bio" className="text-sm text-gray-800 dark:text-white">
               Photo
             </label>
             <div className="flex items-center space-x-2 mt-3">

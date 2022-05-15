@@ -1,4 +1,3 @@
-
 import SbElementExtended from "./sbElementExtended";
 import LogoExtended from "./logoExtended";
 export default function SideBarExtended(props) {
@@ -75,6 +74,7 @@ export default function SideBarExtended(props) {
       svg={element.svg}
       label={element.label}
       select={element.select}
+      key={element.label}
     />
   ));
   return (
@@ -89,7 +89,8 @@ export default function SideBarExtended(props) {
       <div className="fixed bottom-0 mb-4">
         <button
           className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 flex items-center px-8"
-          onClick={() => props.toggle() } key="hide"
+          onClick={() => props.toggle()}
+          key="hide"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

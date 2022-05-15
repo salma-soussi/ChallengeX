@@ -6,7 +6,6 @@ export default function SideBarAdmin() {
   const [isHide, setIsHide] = useState(false);
   function toggle() {
     setIsHide((prev) => !prev);
-    console.log(isHide);
   }
 
   return (
