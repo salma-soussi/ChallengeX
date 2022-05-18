@@ -15,7 +15,6 @@ export default function Comments({ idProject, idUser }) {
       comment.reply = idC;
     }
   };
-  console.log(add);
   const history = useNavigate();
   const [comment, setComment] = useState({
     idProject: idProject,
@@ -40,6 +39,7 @@ export default function Comments({ idProject, idUser }) {
       },
     }).then(() => history(`/Challenges/${idProject}`));
   };
+  console.log(comment);
   return (
     <section>
       <div className="antialiased container px-5 pt-12 mx-auto lg:w-10/12 ">

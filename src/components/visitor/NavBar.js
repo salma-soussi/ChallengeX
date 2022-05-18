@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
 export default function NavBar() {
+  const [sign, setsign] = useState(false);
+
   return (
     <header className="text-gray-500 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -30,14 +33,16 @@ export default function NavBar() {
             Contact
           </NavLink>
         </nav>
-
-        <button
-          type="button"
-          className="py-2 px-4  bg-rose-500 hover:bg-rose-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 w-32 rounded-full tex"
-        >
-          <NavLink to="/signIn">Sign in</NavLink>
-        </button>
-        <DropDownMenu />
+        {sign ? (
+          <DropDownMenu />
+        ) : (
+          <button
+            type="button"
+            className="py-2 px-4  bg-rose-500 hover:bg-rose-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 w-32 rounded-full tex"
+          >
+            <NavLink to="/signIn">Sign in</NavLink>
+          </button>
+        )}
       </div>
     </header>
   );

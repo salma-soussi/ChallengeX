@@ -33,6 +33,7 @@ export default function Pagination({
               type="button"
               className="w-full px-4 py-2 border text-base text-indigo-500 bg-white hover:bg-gray-100 "
               onClick={() => paginate(num)}
+              key={num}
             >
               {num}
             </button>

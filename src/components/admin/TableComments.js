@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 export default function TableComments() {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [commentsPerPage] = useState(7);
+  const [commentsPerPage] = useState(2);
 
   useEffect(() => {
     fetch("http://localhost:4000/projects/")
