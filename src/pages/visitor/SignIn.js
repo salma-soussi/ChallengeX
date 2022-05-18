@@ -1,5 +1,31 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-export default function signIn() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function SignIn() {
+  const history = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("http://localhost:4000/users/auth", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => (data.access ? history("/") : history("/singIn")));
+  };
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
@@ -9,9 +35,7 @@ export default function signIn() {
               <h2 className="text-4xl font-bold text-white">ChallengeX</h2>
 
               <p className="max-w-xl mt-3 text-gray-300">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                autem ipsa, nulla laboriosam dolores, repellendus perferendis
-                libero suscipit nam temporibus molestiae
+                Welcome Back!
               </p>
             </div>
           </div>
@@ -29,7 +53,7 @@ export default function signIn() {
               </p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8" onSubmit={handleSubmit}>
               <form>
                 <div>
                   <label
@@ -44,6 +68,8 @@ export default function signIn() {
                     id="email"
                     placeholder="example@example.com"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.email}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -63,6 +89,8 @@ export default function signIn() {
                     id="password"
                     placeholder="Your Password"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.password}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -87,12 +115,11 @@ export default function signIn() {
             <div className="flex items-center justify-between mt-6">
               <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
 
-              <a
-                href="#"
-                className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline"
+              <span
+                className="text-xs text-center text-gray-500 uppercase dark:text-gray-400"
               >
                 or login with Social Media
-              </a>
+              </span>
 
               <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
             </div>

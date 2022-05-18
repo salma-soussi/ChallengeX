@@ -19,7 +19,7 @@ export default function Project() {
       <NavBar />
       <Detail project={project} />
       <ChallengeDetail project={project}/>
-      <Comments />
+      <Comments idProject={id} />
       <Footer />
     </div>
   );

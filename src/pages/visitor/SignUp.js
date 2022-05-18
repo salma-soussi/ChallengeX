@@ -1,5 +1,37 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function SignUp() {
+  const history = useNavigate();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    bio: "",
+    password: "",
+    ImageUpload: "",
+    passwordConfirm: "",
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (user.password === user.passwordConfirm) {
+      fetch("http://localhost:4000/users/", {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then(() => history("/"));
+    } else {
+      console.log("Passwords do not match");
+    }
+  };
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center h-screen">
@@ -9,9 +41,7 @@ export default function SignUp() {
               <h2 className="text-4xl font-bold text-white">ChallengeX</h2>
 
               <p className="max-w-xl mt-3 text-gray-300">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                autem ipsa, nulla laboriosam dolores, repellendus perferendis
-                libero suscipit nam temporibus molestiae
+                Welcome to our site!
               </p>
             </div>
           </div>
@@ -30,7 +60,7 @@ export default function SignUp() {
             </div>
 
             <div className="mt-8">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div>
                   <label
                     htmlFor="name"
@@ -44,6 +74,8 @@ export default function SignUp() {
                     id="name"
                     placeholder="Name"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.name}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="mt-6">
@@ -59,6 +91,8 @@ export default function SignUp() {
                     id="email"
                     placeholder="example@example.com"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.email}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -77,6 +111,8 @@ export default function SignUp() {
                     id="password"
                     placeholder="Your Password"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.password}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -95,6 +131,8 @@ export default function SignUp() {
                     id="passwordConfirm"
                     placeholder="Confirme Your Password"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={user.passwordConfirm}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -109,12 +147,9 @@ export default function SignUp() {
             <div className="flex items-center justify-between mt-6">
               <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
 
-              <a
-                href="#"
-                className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline"
-              >
+              <span className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 cursor-default">
                 or login with Social Media
-              </a>
+              </span>
 
               <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
             </div>

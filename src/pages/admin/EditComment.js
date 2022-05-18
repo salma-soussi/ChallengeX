@@ -1,11 +1,43 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import SideBarAdmin from "../../components/admin/SideBarAdmin";
 export default function EditComment() {
+  const { id } = useParams();
+  const history = useNavigate();
+  const [comment, setComment] = useState({
+    idProject: "",
+    idUser: "",
+    comment: "",
+    reply: "",
+  });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setComment((prevComment) => ({
+      ...prevComment,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch("http://localhost:4000/projects/" + id, {
+      method: "PATCH",
+      body: JSON.stringify(comment),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then(() => history(`/app/Comments`));
+  };
+  useEffect(() => {
+    fetch("http://localhost:4000/projects/" + id)
+      .then((res) => res.json())
+      .then((data) => setComment(data));
+  }, []);
+  console.log(comment);
   return (
     <div className="flex  justify-start relative  m-0">
       <SideBarAdmin />
       <div className="flex flex-col p-1 relative w-full pl-20">
-        <form className="container pr-9 mt-10 ">
+        <form className="container pr-9 mt-10 " onSubmit={handleSubmit}>
           <div className="p-4 bg-gray-100  dark:bg-slate-800  rounded-lg bg-opacity-5">
             <div className="max-w-sm mx-auto md:w-full md:mx-0">
               <div className="inline-flex items-center space-x-4">
@@ -27,10 +59,10 @@ export default function EditComment() {
                 <div className=" relative ">
                   <input
                     type="text"
-                    id="user-info-email"
                     disabled
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-50 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                    placeholder="Email"
+                    name="idProject"
+                    value={comment.comment}
                   />
                 </div>
               </div>
@@ -49,7 +81,9 @@ export default function EditComment() {
                         name="comment"
                         rows="5"
                         cols="40"
-                      ></textarea>
+                        value={comment.comment}
+                        onChange={handleChange}
+                      />
                     </label>
                   </div>
                 </div>
@@ -61,13 +95,25 @@ export default function EditComment() {
                     >
                       <span>Reply</span>
                       <span className="relative">
-                        <input
-                          id="Toggle1"
-                          type="checkbox"
-                          className="hidden peer bg-coolGray-700"
-                          checked
-                          disabled
-                        />
+                        {comment.comment ? (
+                          <input
+                            id="Toggle1"
+                            type="checkbox"
+                            className="hidden peer bg-coolGray-700"
+                            checked
+                            disabled
+                            value={comment.comment}
+                          />
+                        ) : (
+                          <input
+                            id="Toggle1"
+                            type="checkbox"
+                            className="hidden peer bg-coolGray-700"
+                            disabled
+                            value={comment.comment}
+                          />
+                        )}
+
                         <div className="w-10 h-6 rounded-full shadow-inner bg-red-300 peer-checked:bg-green-300"></div>
                         <div
                           className="absolute inset-y-0 left-0 w-4 h-4 m-1 rounded-full shadow

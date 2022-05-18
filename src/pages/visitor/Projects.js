@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 
 export default function Projects() {
   const [allProjects, setAllProjects] = useState([]);
+  
   useEffect(() => {
     fetch("http://localhost:4000/projects/")
       .then((res) => res.json())
       .then((data) => setAllProjects(data));
   }, []);
+
   const cards = allProjects.map((data) => <Card data={data} key={data._id} />);
   return (
     <div>
