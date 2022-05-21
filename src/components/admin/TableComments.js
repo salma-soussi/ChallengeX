@@ -6,24 +6,26 @@ import Pagination from "./Pagination";
 export default function TableComments() {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [commentsPerPage] = useState(2);
+  const [commentsPerPage] = useState(7);
 
   useEffect(() => {
-    fetch("http://localhost:4000/projects/")
+    fetch("http://localhost:8080/api/v1/comment/view")
       .then((res) => res.json())
       .then((data) => setComments(data));
   }, []);
-
+  const deleted = (id) => {
+    fetch("http://localhost:8080/api/v1/comment/delete/" + id, { method: "delete" });
+  };
+  console.log(comments)
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
   const currentComment = comments.slice(
     indexOfFirstComment,
     indexOfLastComment
   );
-  
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const commentsEl = currentComment.map((comment) => (
-    <tr>
+    <tr key={comment.id_comment}>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
@@ -37,16 +39,16 @@ export default function TableComments() {
           </div>
           <div className="ml-3">
             <p className="text-gray-900 whitespace-no-wrap flex-nowrap">
-              {comment.type}
+              {comment.comment}
             </p>
           </div>
         </div>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{comment.body}</p>
+        <p className="text-gray-900 whitespace-no-wrap">{comment.comment_txt}</p>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        {comment.likes ? (
+        {comment.reply ? (
           <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
             <span
               aria-hidden="true"
@@ -65,11 +67,12 @@ export default function TableComments() {
         )}
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">01/10/2012</p>
+        <p className="text-gray-900 whitespace-no-wrap">{comment.comment_txt}</p>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
-        <Link to={`/app/Comments/${comment._id}`}>
-          <button className="text-indigo-600 hover:text-indigo-900 mr-2">
+        <form onSubmit={() => deleted(comment.id_comment)}>
+        <Link to={`/app/Comments/${comment.id_comment}`}>
+          <button className="text-indigo-600 hover:text-indigo-900 mr-2" type="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 text-green-600 hover:text-green-900"
@@ -80,20 +83,21 @@ export default function TableComments() {
             </svg>
           </button>
         </Link>
-        <button href="#" className="text-indigo-600 hover:text-indigo-900">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5  text-red-600 hover:text-red-900"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
+          <button className="text-indigo-600 hover:text-indigo-900">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5  text-red-600 hover:text-red-900"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+            >
+              <path
+                  fillRule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clipRule="evenodd"
+              />
+            </svg>
+          </button>
+        </form>
       </td>
     </tr>
   ));

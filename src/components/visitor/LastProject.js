@@ -4,11 +4,11 @@ import Card from "../visitor/Card";
 export default function LastProject() {
   const [allProjects, setAllProjects] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/projects/")
+    fetch("http://localhost:8080/api/v1/project/view")
       .then((res) => res.json())
       .then((data) => setAllProjects(data));
   }, []);
-  const cards = allProjects.map((data) => <Card data={data} key={data._id} />);
+  const cards = allProjects.map((data) => <Card data={data} key={data.project_id} />);
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">

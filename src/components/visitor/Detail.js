@@ -14,11 +14,11 @@ export default function Detail({project}) {
               Design
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {project.title}
+              {project.project_title}
             </h1>
             <div className="flex mb-4">
               <span className="flex items-center py-2 ">
-                <span className="text-gray-600 mr-1">{project.likes} </span>
+                <span className="text-gray-600 mr-1">{project.project_likes} </span>
                 <svg
                   fill="currentColor"
                   strokeLinecap="round"
@@ -32,7 +32,7 @@ export default function Detail({project}) {
               </span>
 
               <span className="flex items-center py-2 ">
-                <span className="text-gray-600 mx-1">{project.likes} </span>
+                <span className="text-gray-600 mx-1">{project.project_likes} </span>
                 <svg
                   fill="currentColor"
                   strokeLinecap="round"
@@ -46,7 +46,7 @@ export default function Detail({project}) {
               </span>
             </div>
             <p className="leading-relaxed">
-            {project.description} 
+            {project.project_description}
             </p>
 
             <div className="flex justify-between mt-4 w-full">

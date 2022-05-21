@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Cars({ data }) {
   return (
     <div className="p-4 md:w-1/3 w-1/3">
-      <Link to={`/Challenges/${data._id}`}>
+      <Link to={`/Challenges/${data.project_id}`}>
         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
           <img
             className="lg:h-52 md:h-36 w-full object-cover object-center"
@@ -15,9 +15,9 @@ export default function Cars({ data }) {
             {data.type}
             </h2>
             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-              {data.title}
+              {data.project_title}
             </h1>
-            <p className="leading-relaxed mb-3">{data.description}</p>
+            <p className="leading-relaxed mb-3">{data.project_description}</p>
             <div className="flex items-center flex-wrap ">
               <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
                 <svg
@@ -34,7 +34,7 @@ export default function Cars({ data }) {
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                   />
                 </svg>
-                {data.likes}
+                {data.project_likes}
               </span>
               <span className="text-gray-400 inline-flex items-center leading-none text-sm">
                 <svg
@@ -48,7 +48,7 @@ export default function Cars({ data }) {
                 >
                   <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
                 </svg>
-                {data.likes}
+                {data.project_likes}
               </span>
             </div>
           </div>

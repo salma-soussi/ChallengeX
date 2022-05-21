@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ClosedComment from "./ClosedComment";
 import OpenComment from "./OpenComment";
@@ -17,11 +17,23 @@ export default function Comments({ idProject, idUser }) {
   };
   const history = useNavigate();
   const [comment, setComment] = useState({
-    idProject: idProject,
-    idUser: "123",
-    comment: "",
+    id_project: idProject,
+    id_person: "123",
+    comment_txt: "",
     reply: "",
   });
+  const [ALLcomments, setComments] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:8080/api/v1/comment/view")
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  }, []);
+
+  const commentsEl = ALLcomments.map((commentEl) => {
+    return commentEl.id_project == idProject ? (<SimpleComment comment={commentEl}/>):(<p></p>)
+  })
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setComment((prevComment) => ({
@@ -30,16 +42,14 @@ export default function Comments({ idProject, idUser }) {
     }));
   };
   const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch("http://localhost:4000/comments/", {
+    fetch("http://localhost:8080/api/v1/comment/create", {
       method: "POST",
       body: JSON.stringify(comment),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    }).then(() => history(`/Challenges/${idProject}`));
+    }).then(() => {comment.comment_txt=""; history(`/Challenges/${idProject}`)});
   };
-  console.log(comment);
   return (
     <section>
       <div className="antialiased container px-5 pt-12 mx-auto lg:w-10/12 ">
@@ -53,9 +63,7 @@ export default function Comments({ idProject, idUser }) {
         </div>
 
         <div className="space-y-4">
-          <SimpleComment />
-          <ClosedComment />
-          <OpenComment toggle={toggle} idComment="456" />
+          {commentsEl}
           <form className="w-full   rounded-lg  pt-2" onSubmit={handleSubmit}>
             {add ? (
               <h2 className="pt-3 pb-2 text-gray-800 text-lg tracking-widest font-medium title-font uppercase">
@@ -70,10 +78,10 @@ export default function Comments({ idProject, idUser }) {
             <div className="w-full md:w-full mb-2 mt-2">
               <textarea
                 className="bg-white-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                name="comment"
+                name="comment_txt"
                 placeholder="Type Your Comment"
                 required
-                value={comment.comment}
+                value={comment.comment_txt}
                 onChange={handleChange}
               />
             </div>

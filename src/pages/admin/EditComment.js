@@ -5,9 +5,9 @@ export default function EditComment() {
   const { id } = useParams();
   const history = useNavigate();
   const [comment, setComment] = useState({
-    idProject: "",
-    idUser: "",
-    comment: "",
+    comproject_id: "",
+    comperson_id: "",
+    comment_txt: "",
     reply: "",
   });
   const handleChange = (event) => {
@@ -19,7 +19,7 @@ export default function EditComment() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:4000/projects/" + id, {
+    fetch("http://localhost:8080/api/v1/comment/update/" + id, {
       method: "PATCH",
       body: JSON.stringify(comment),
       headers: {
@@ -28,11 +28,10 @@ export default function EditComment() {
     }).then(() => history(`/app/Comments`));
   };
   useEffect(() => {
-    fetch("http://localhost:4000/projects/" + id)
+    fetch("http://localhost:8080/api/v1/comment/view/" + id)
       .then((res) => res.json())
       .then((data) => setComment(data));
   }, []);
-  console.log(comment);
   return (
     <div className="flex  justify-start relative  m-0">
       <SideBarAdmin />
@@ -61,8 +60,8 @@ export default function EditComment() {
                     type="text"
                     disabled
                     className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-50 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                    name="idProject"
-                    value={comment.comment}
+                    name="comproject_id"
+                    value={comment.id_project}
                   />
                 </div>
               </div>
@@ -78,10 +77,10 @@ export default function EditComment() {
                         className="flex-1 appearance-none border border-gray-50 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                         id="comment"
                         placeholder="Enter your comment"
-                        name="comment"
+                        name="comment_txt"
                         rows="5"
                         cols="40"
-                        value={comment.comment}
+                        value={comment.comment_txt}
                         onChange={handleChange}
                       />
                     </label>

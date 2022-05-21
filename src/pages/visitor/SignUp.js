@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 export default function SignUp() {
   const history = useNavigate();
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    bio: "",
-    password: "",
-    ImageUpload: "",
+    person_name: "",
+    person_email: "",
+    person_bio: "",
+    person_password: "",
+    person_profile_picture: "",
     passwordConfirm: "",
+    person_role:"User"
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,8 +21,8 @@ export default function SignUp() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (user.password === user.passwordConfirm) {
-      fetch("http://localhost:4000/users/", {
+    if (user.person_password === user.passwordConfirm) {
+      fetch("http://localhost:8080/api/v1/person/create", {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
@@ -70,11 +71,11 @@ export default function SignUp() {
                   </label>
                   <input
                     type="text"
-                    name="name"
+                    name="person_name"
                     id="name"
                     placeholder="Name"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    value={user.name}
+                    value={user.person_name}
                     onChange={handleChange}
                   />
                 </div>
@@ -87,11 +88,11 @@ export default function SignUp() {
                   </label>
                   <input
                     type="email"
-                    name="email"
+                    name="person_email"
                     id="email"
                     placeholder="example@example.com"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    value={user.email}
+                    value={user.person_email}
                     onChange={handleChange}
                   />
                 </div>
@@ -107,11 +108,11 @@ export default function SignUp() {
                   </div>
                   <input
                     type="password"
-                    name="password"
+                    name="person_password"
                     id="password"
                     placeholder="Your Password"
                     className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-rose-400 dark:focus:border-rose-400 focus:ring-rose-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    value={user.password}
+                    value={user.person_password}
                     onChange={handleChange}
                   />
                 </div>

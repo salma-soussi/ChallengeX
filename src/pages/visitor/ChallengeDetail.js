@@ -15,7 +15,7 @@ export default function ChallengeDetail({ project }) {
             <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
               Brief
             </h2>
-            <p className="leading-relaxed text-base">{project.body}</p>
+            <p className="leading-relaxed text-base">{project.project_body}</p>
 
             <button
               type="button"

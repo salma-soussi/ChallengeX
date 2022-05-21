@@ -10,7 +10,7 @@ export default function Project() {
   const { id } = useParams();
   const [project, setProject] = useState({});
   useEffect(() => {
-    fetch("http://localhost:4000/projects/" + id)
+    fetch("http://localhost:8080/api/v1/project/view/" + id)
       .then((res) => res.json())
       .then((data) => setProject(data));
   }, []);// eslint-disable-line react-hooks/exhaustive-deps

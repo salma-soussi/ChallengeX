@@ -5,13 +5,12 @@ import SideBarAdmin from "../../components/admin/SideBarAdmin";
 export default function AddProject() {
   const history = useNavigate();
   const [project, setProject] = useState({
-    title: "",
-    type: "",
-    tags: "",
-    description: "",
-    body: "",
-    ImageUpload: "",
-    fileUpload: "",
+    project_title: "",
+    project_description: "",
+    project_file_upload: "",
+    project_image_upload: "",
+    project_likes: "0",
+    project_body: "",
   });
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
@@ -20,9 +19,10 @@ export default function AddProject() {
       [name]: type === "file" ? files[0].name : value,
     }));
   };
+  console.log(project)
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:4000/projects/", {
+    fetch("http://localhost:8080/api/v1/project/create", {
       method: "POST",
       body: JSON.stringify(project),
       headers: {
@@ -33,10 +33,10 @@ export default function AddProject() {
   return (
     <div className="flex justify-start relative m-0">
       <SideBarAdmin />
-      <div className="flex flex-col p-2 relative mt-4 bg-gray-100 mr-10 rounded-lg  w-full pl-20">
+      <div className="flex flex-col p-2 relative mt-12 bg-gray-100 mr-10 rounded-lg  w-full pl-20">
         <form
-          onSubmit={handleSubmit}
-          className="container flex flex-col mx-auto p-4 space-y-6 ng-untouched ng-pristine ng-valid"
+            onSubmit={handleSubmit}
+            className="container flex flex-col mx-auto p-4 space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <fieldset className="p-4 rounded-md shadow-sm bg-gray-50">
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -45,13 +45,13 @@ export default function AddProject() {
                   Title
                 </label>
                 <input
-                  id="firstname"
-                  type="text"
-                  placeholder="Title"
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.title}
-                  name="title"
-                  onChange={handleChange}
+                    id="firstname"
+                    type="text"
+                    placeholder="First name"
+                    className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
+                    value={project.project_title}
+                    name="project_title"
+                    onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-3">
@@ -60,10 +60,10 @@ export default function AddProject() {
                 </label>
 
                 <select
-                  className="block w-full text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
-                  name="type"
-                  value={project.type}
-                  onChange={handleChange}
+                    className="block w-full text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-gray-500 focus:border-gray-500"
+                    name="type"
+                    value={project.type}
+                    onChange={handleChange}
                 >
                   <option value="">Select an option</option>
                   <option value="Design">Design</option>
@@ -75,13 +75,13 @@ export default function AddProject() {
                   Tags
                 </label>
                 <input
-                  id="address"
-                  type="text"
-                  placeholder="HTML,CSS,..."
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.tags}
-                  name="tags"
-                  onChange={handleChange}
+                    id="address"
+                    type="text"
+                    placeholder=""
+                    className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
+                    value={project.tags}
+                    name="tags"
+                    onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-3">
@@ -102,13 +102,13 @@ export default function AddProject() {
                   Description
                 </label>
                 <input
-                  id="address"
-                  type="text"
-                  placeholder="Description"
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.description}
-                  name="description"
-                  onChange={handleChange}
+                    id="address"
+                    type="text"
+                    placeholder=""
+                    className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
+                    value={project.project_description}
+                    name="project_description"
+                    onChange={handleChange}
                 />
               </div>
               <div className="col-span-full">
@@ -116,12 +116,12 @@ export default function AddProject() {
                   Body
                 </label>
                 <textarea
-                  id="bio"
-                  placeholder=""
-                  className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.body}
-                  name="body"
-                  onChange={handleChange}
+                    id="bio"
+                    placeholder=""
+                    className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
+                    value={project.project_body}
+                    name="project_body"
+                    onChange={handleChange}
                 />
               </div>
               <div className="col-span-full sm:col-span-3">
@@ -130,17 +130,17 @@ export default function AddProject() {
                 </label>
                 <div className="flex items-center space-x-2">
                   <img
-                    src="https://source.unsplash.com/random/300x300/?1"
-                    alt=""
-                    className="object-cover object-center w-40 rounded-md h-40 bg-coolGray-500"
+                      src="https://source.unsplash.com/random/300x300/?1"
+                      alt=""
+                      className="object-cover object-center w-40 rounded-md h-40 bg-coolGray-500"
                   />
                   <label className="block">
                     <span className="sr-only">Choose profile photo</span>
                     <input
-                      type="file"
-                      className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100"
-                      name="ImageUpload"
-                      onChange={handleChange}
+                        type="file"
+                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100"
+                        name="project_image_upload"
+                        onChange={handleChange}
                     />
                   </label>
                 </div>
@@ -152,11 +152,11 @@ export default function AddProject() {
                 <div className="flex items-center space-x-2">
                   <div className="flex">
                     <input
-                      type="file"
-                      name="fileUpload"
-                      id="files"
-                      className="px-8 py-12 border-2 border-dashed rounded-md border-coolGray-300 text-coolGray-600 bg-coolGray-100"
-                      onChange={handleChange}
+                        type="file"
+                        name="project_file_upload"
+                        id="files"
+                        className="px-8 py-12 border-2 border-dashed rounded-md border-coolGray-300 text-coolGray-600 bg-coolGray-100"
+                        onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -165,15 +165,15 @@ export default function AddProject() {
           </fieldset>
           <button className="py-2 px-4 flex justify-center items-center bg-sky-600 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg self-end">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
             >
               <path
-                fillRule="evenodd"
-                d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                clipRule="evenodd"
+                  fillRule="evenodd"
+                  d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                  clipRule="evenodd"
               />
             </svg>
             Add
