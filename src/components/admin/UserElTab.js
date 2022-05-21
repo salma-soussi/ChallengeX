@@ -5,7 +5,7 @@ export default function UserElTab({ user, deleted }) {
     <tr>
       <td
         className="px-5 py-3 border-b border-gray-200 bg-white text-sm"
-        key={user._id}
+        key={user.person_id}
       >
         <div className="flex items-center">
           <div className="flex-shrink-0">
@@ -19,22 +19,22 @@ export default function UserElTab({ user, deleted }) {
           </div>
           <div className="ml-3">
             <p className="text-gray-900 whitespace-no-wrap flex-nowrap">
-              {user.name}
+              {user.person_name}
             </p>
           </div>
         </div>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user.body}</p>
+        <p className="text-gray-900 whitespace-no-wrap">{user.person_bio}</p>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        {user.email}
+        {user.person_email}
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user.createdAt}</p>
+        <p className="text-gray-900 whitespace-no-wrap">{user.person_time}</p>
       </td>
       <td className="px-5 py-3 border-b border-gray-200 bg-white text-sm ">
-        <form onSubmit={() => deleted(user._id)}>
+        <form onSubmit={() => deleted(user.person_id)}>
           <button className="text-sky-600 hover:text-sky-900" type="submit">
             <svg
               xmlns="http://www.w3.org/2000/svg"

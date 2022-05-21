@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import UserElTab from "./UserElTab";
 
@@ -9,21 +8,22 @@ export default function TableUser() {
   const [usersPerPage] = useState(7);
 
   const deleted = (id) => {
-    fetch("http://localhost:4000/users/" + id, { method: "delete" });
+    fetch("http://localhost:8080/api/v1/person/delete/" + id, { method: "delete" });
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/users/")
+    fetch("http://localhost:8080/api/v1/person/view")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+  console.log(users)
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUser = users.slice(indexOfFirstUser, indexOfLastUser);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   console.log(users);
   const UsersEl = currentUser.map((user) => (
-    <UserElTab user={user} deleted={deleted} key={user._id} />
+    <UserElTab user={user} deleted={deleted} key={user.person_id} />
   ));
   return (
     <div className="container px-3 mt-8 max-w-full ">

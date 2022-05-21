@@ -6,17 +6,16 @@ export default function EditProject() {
   const { id } = useParams();
   const history = useNavigate();
   const [project, setProject] = useState({
-    title: "",
-    type: "",
-    tags: "",
-    description: "",
-    body: "",
-    ImageUpload: "",
-    fileUpload: "",
+    project_title: "",
+    project_description: "",
+    project_file_upload: "",
+    project_image_upload: "",
+    project_likes: "",
+    project_body: "",
   });
-
+  console.log(project)
   const deleted = () => {
-    fetch("http://localhost:4000/projects/" + id, { method: "delete" }).then(
+    fetch("http://localhost:8080/api/v1/project/delete/" + id, { method: "delete" }).then(
       () => {
         history("/app/Projects");
       }
@@ -24,8 +23,8 @@ export default function EditProject() {
   };
   const updated = (event) => {
     event.preventDefault();
-    fetch("http://localhost:4000/projects/" + id, {
-      method: "PATCH",
+    fetch("http://localhost:8080/api/v1/update/view/" + id, {
+      method: "put",
       body: JSON.stringify(project),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -40,7 +39,7 @@ export default function EditProject() {
     }));
   };
   useEffect(() => {
-    fetch("http://localhost:4000/projects/" + id)
+    fetch("http://localhost:8080/api/v1/project/view/" + id)
       .then((res) => res.json())
       .then((data) => setProject(data));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -63,8 +62,8 @@ export default function EditProject() {
                   type="text"
                   placeholder="First name"
                   className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.title}
-                  name="title"
+                  value={project.project_title}
+                  name="project_title"
                   onChange={handleChange}
                 />
               </div>
@@ -120,8 +119,8 @@ export default function EditProject() {
                   type="text"
                   placeholder=""
                   className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.description}
-                  name="description"
+                  value={project.project_description}
+                  name="project_description"
                   onChange={handleChange}
                 />
               </div>
@@ -133,8 +132,8 @@ export default function EditProject() {
                   id="bio"
                   placeholder=""
                   className="w-full rounded-md focus:ring focus:ring-opacity-75 px-3 py-2 focus:ring-gray-600 border-coolGray-300 text-coolGray-900"
-                  value={project.body}
-                  name="body"
+                  value={project.project_body}
+                  name="project_body"
                   onChange={handleChange}
                 />
               </div>
@@ -153,7 +152,7 @@ export default function EditProject() {
                     <input
                       type="file"
                       className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100"
-                      name="ImageUpload"
+                      name="project_image_upload"
                       onChange={handleChange}
                     />
                   </label>
@@ -167,7 +166,7 @@ export default function EditProject() {
                   <div className="flex">
                     <input
                       type="file"
-                      name="fileUpload "
+                      name="project_file_upload"
                       id="files"
                       className="px-8 py-12 border-2 border-dashed rounded-md border-coolGray-300 text-coolGray-600 bg-coolGray-100"
                       onChange={handleChange}

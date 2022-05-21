@@ -3,15 +3,19 @@ import Card from "../../components/admin/Card";
 import SideBarAdmin from "../../components/admin/SideBarAdmin";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Project() {
   const [allProjects, setAllProjects] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:4000/projects/")
+ useEffect(() => {
+    fetch("http://localhost:8080/api/v1/project/view")
       .then((res) => res.json())
-      .then((data) => setAllProjects(data));
+     .then((data) => {
+       setAllProjects(data)
+     });
+
   }, []);
-  const cards = allProjects.map((data) => <Card data={data} key={data._id} />);
+  const cards = allProjects.map((data) => <Card data={data} key={data.project_id} />);
   return (
     <div className="flex  justify-start relative  m-0">
       <SideBarAdmin />
